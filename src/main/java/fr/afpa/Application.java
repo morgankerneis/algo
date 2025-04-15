@@ -6,7 +6,6 @@ public class Application {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello wum!");
         // Niveau 1
 
         // 3.1
@@ -30,6 +29,9 @@ public class Application {
 
         // 4.2
         // sumIncrementN();
+
+        Double[] array = {12.2, 11.3, 4.4, 2.0};
+        printArrayContent(array);
 
     }
 
@@ -215,5 +217,49 @@ public class Application {
         }
 
         return sum;
+    }
+
+    /**
+     * Tu connais le Fizzbuzz frr sinon t'es pas embauché t'façon
+     * @param chosenNumber
+     * @return Fizzbuzz is love, fizzbuzz is life.
+     */
+    public static Object[] fizzbuzz(int chosenNumber) {
+        Object[] mixedArray = new Object[chosenNumber];
+
+        for (int i = 1; i <= chosenNumber; i++) {
+            int moduloThree = i % 3;
+            int moduloFive = i % 5;
+            int arrayIndex = i - 1;
+
+            if (moduloThree == 0 && moduloFive == 0) {
+                mixedArray[arrayIndex] = "Fizzbuzz"; 
+            } else if (moduloThree == 0) {
+                mixedArray[arrayIndex] = "Fizz";
+            } else if (moduloFive == 0) {
+                mixedArray[arrayIndex] = "Buzz";
+            } else {
+                mixedArray[arrayIndex] = i;
+            }
+        }
+
+        return mixedArray;
+    }
+
+    public static int factorial(int n) {
+        int result = 1;
+
+        // Starting at i == 2 to skip 1 * 1
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+
+        return result;
+    }
+
+    public static <T> void printArrayContent(T[] array) {
+        for (Object item : array) {
+            System.out.println(item);
+        }
     }
 }

@@ -2,6 +2,7 @@ package fr.afpa;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest {
@@ -28,5 +29,21 @@ class ApplicationTest {
     @Test
     void testSortCharacter() {
         Application.sortCharacter();
+    }
+
+    @Test
+    void testFizzbuzz() {
+        Object[] resultArray = Application.fizzbuzz(5);
+        Object[] expectedArray = {1, 2, "Fizz", 4, "Buzz"};
+
+        assertArrayEquals(expectedArray, resultArray);
+    }
+
+    @Test
+    void testFactorial() {
+        int result = Application.factorial(5);
+        int expectedResult = 120;
+
+        assertEquals(expectedResult, result);
     }
 }
