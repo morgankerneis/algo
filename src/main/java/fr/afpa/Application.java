@@ -6,32 +6,6 @@ public class Application {
 
     public static void main(String[] args) {
 
-        // Niveau 1
-
-        // 3.1
-        // checkAge();
-
-        // 3.2
-        // findMinAndMax();
-
-        // 3.3
-        // sortCharacter();
-
-        // 3.4
-        // checkAccountBalance();
-
-        // 3.5
-        // calculateRefundRate();
-
-        // 4.1
-        // subCountFor();
-        // subCountWhile();
-
-        // 4.2
-        // sumIncrementN();
-
-        Double[] array = {12.2, 11.3, 4.4, 2.0};
-        printArrayContent(array);
 
     }
 
@@ -261,5 +235,140 @@ public class Application {
         for (Object item : array) {
             System.out.println(item);
         }
+    }
+
+    /**
+     * Uses a for loop to search through an array for a given value.
+     * @param array
+     * @param arrayLength
+     * @param searchedElement
+     * @return
+     * Returns index of searched element.
+     * Returns -1 if not found.
+     */
+    public static int findArrayIndexFor(int[] array, int arrayLength, int searchedElement) {        
+        for (int i = 0; i < arrayLength; i++) {
+            if (array[i] == searchedElement) {
+                return i;
+            }
+        }
+        // Only returns this when not found during search.
+        return -1;
+    }
+
+    public static int findArrayIndexWhile(int[] array, int searchedElement) {
+        int arrayLength = array.length;
+        int loopCount = 0;
+        int result = -1;
+
+        while (loopCount < arrayLength) {
+             
+            if (array[loopCount] == searchedElement) {
+                result = loopCount;
+                // early loop stoppage
+                loopCount = arrayLength;
+            }
+
+            loopCount++;
+        }
+
+        return result;
+    }
+
+    public static int findArrayIndexDoWhile(int[] array, int searchedElement) {
+        int arrayLength = array.length;
+        int loopCount = 0;
+        int result = -1;
+
+        do {
+            if (array[loopCount] == searchedElement) {
+                result = loopCount;
+                // ealry loop stoppage
+                loopCount = arrayLength;
+            }
+            loopCount++;
+
+        } while (loopCount < arrayLength);
+
+        return result;
+    }
+
+    public static int findSumBetweenIndex(int[] array, int indexA, int indexB) {
+        int sum = 0;
+
+        for (int i = indexA; i < indexB; i++) {
+            sum += array[i];
+        }
+
+        return sum;
+    }
+
+    public static int[] arrayMinMaxValues(int[] array) {
+        int arrayLength = array.length;
+        int min = array[0];
+        int max = array[0];
+        int indexMin = 0;
+        int indexMax = 0;
+
+        for (int i = 0; i < arrayLength; i++) {
+            if (min > array[i]) {
+                min = array[i];
+                indexMin = i;
+            }
+            if (max < array[i]) {
+                max = array[i];
+                indexMax = i;
+            }
+        }
+
+        int[] minMax = {indexMin, indexMax};
+        return minMax;
+    }
+
+    public static boolean swapArrayValues(int[] array, int indexA, int indexB) {
+        boolean indexAIsValid = false;
+        boolean indexBIsValid = false;
+
+        if (indexA >= 0 && indexA < array.length) {
+            indexAIsValid = true;
+        }
+        if (indexB >= 0 && indexB < array.length) {
+            indexBIsValid = true;
+        }
+        if (indexAIsValid == true && indexBIsValid == true) {
+            int intermediateVariable = array[indexA];
+            array[indexA] = array[indexB];
+            array[indexB] = intermediateVariable;
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static int calcAverageInArray(int[] array) {
+        int sumOfValues = 0;
+        int numberOfValues = 0;
+
+        for (int value : array) {
+            sumOfValues += value;
+            numberOfValues++;
+        }
+
+        int averageOfValues = sumOfValues / numberOfValues;
+
+        return averageOfValues;
+    }
+
+    public static int[] invertArray(int[] array) {
+        int[] invertedArray = new int[array.length];
+        int invertedIndex = array.length - 1;
+
+        for (int number : array) {
+            invertedArray[invertedIndex] = number;
+            invertedIndex--;
+        }
+
+        return invertedArray;
     }
 }

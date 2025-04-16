@@ -46,4 +46,67 @@ class ApplicationTest {
 
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    void testFindArrayIndexFor() {
+        int[] array = {1, 2, 3, 4, 5};
+        int result = Application.findArrayIndexFor(array, array.length, 0);
+        int expectedResult = -1;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testFindArrayIndexWhile() {
+        int[] array = {1, 2, 3, 4, 5};
+        int result = Application.findArrayIndexWhile(array, 1);
+        int expectedResult = 0;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testFindArrayIndexDoWhile() {
+        int[] array = {1, 2, 3, 4, 5};
+        int result = Application.findArrayIndexDoWhile(array, 3);
+        int expectedResult = 2;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testFindSumBetweenIndex() {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        int result = Application.findSumBetweenIndex(array, 0, 3);
+        int expectedResult = 6;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testArrayMinMax() {
+        int[] array = {1, 2, 3, 4};
+        int[] result = Application.arrayMinMaxValues(array);
+        int[] expectedResult = {0, 3};
+
+        assertArrayEquals(expectedResult, result);
+    }
+
+    @Test
+    void testcalcAverageOfArrayValues() {
+        int[] array = {10, 15, 20};
+        int result = Application.calcAverageInArray(array);
+        int expectedResult = 15;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testInvertArray() {
+        int[] array = {1, 2, 3, 4, 5};
+        int[] invertedArray = Application.invertArray(array);
+        int[] expectedResult = {5, 4, 3, 2, 1};
+
+        assertArrayEquals(expectedResult, invertedArray);
+    }
 }
