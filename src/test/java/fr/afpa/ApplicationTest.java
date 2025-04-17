@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ApplicationTest {
 
-
     /**
      * Fonction de test de la méthode "sumIncrementN"
      */
@@ -15,12 +14,12 @@ class ApplicationTest {
     void testSumIncrementN() {
 
         // appel de la fonction statique avec le nombre max de 5
-       int result = Application.sumIncrementN(5);
+        int result = Application.sumIncrementN(5);
 
-       // vérification du résultat
-       assertEquals(15, result);
+        // vérification du résultat
+        assertEquals(15, result);
     }
-    
+
     @Test
     void testFindMinMax() {
         Application.findMinAndMax();
@@ -34,7 +33,7 @@ class ApplicationTest {
     @Test
     void testFizzbuzz() {
         Object[] resultArray = Application.fizzbuzz(5);
-        Object[] expectedArray = {1, 2, "Fizz", 4, "Buzz"};
+        Object[] expectedArray = { 1, 2, "Fizz", 4, "Buzz" };
 
         assertArrayEquals(expectedArray, resultArray);
     }
@@ -49,7 +48,7 @@ class ApplicationTest {
 
     @Test
     void testFindArrayIndexFor() {
-        int[] array = {1, 2, 3, 4, 5};
+        int[] array = { 1, 2, 3, 4, 5 };
         int result = Application.findArrayIndexFor(array, array.length, 0);
         int expectedResult = -1;
 
@@ -58,7 +57,7 @@ class ApplicationTest {
 
     @Test
     void testFindArrayIndexWhile() {
-        int[] array = {1, 2, 3, 4, 5};
+        int[] array = { 1, 2, 3, 4, 5 };
         int result = Application.findArrayIndexWhile(array, 1);
         int expectedResult = 0;
 
@@ -67,7 +66,7 @@ class ApplicationTest {
 
     @Test
     void testFindArrayIndexDoWhile() {
-        int[] array = {1, 2, 3, 4, 5};
+        int[] array = { 1, 2, 3, 4, 5 };
         int result = Application.findArrayIndexDoWhile(array, 3);
         int expectedResult = 2;
 
@@ -76,7 +75,7 @@ class ApplicationTest {
 
     @Test
     void testFindSumBetweenIndex() {
-        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        int[] array = { 1, 2, 3, 4, 5, 6, 7 };
         int result = Application.findSumBetweenIndex(array, 0, 3);
         int expectedResult = 6;
 
@@ -85,16 +84,16 @@ class ApplicationTest {
 
     @Test
     void testArrayMinMax() {
-        int[] array = {1, 2, 3, 4};
+        int[] array = { 1, 2, 3, 4 };
         int[] result = Application.arrayMinMaxValues(array);
-        int[] expectedResult = {0, 3};
+        int[] expectedResult = { 0, 3 };
 
         assertArrayEquals(expectedResult, result);
     }
 
     @Test
     void testcalcAverageOfArrayValues() {
-        int[] array = {10, 15, 20};
+        int[] array = { 10, 15, 20 };
         int result = Application.calcAverageInArray(array);
         int expectedResult = 15;
 
@@ -103,10 +102,13 @@ class ApplicationTest {
 
     @Test
     void testInvertArray() {
-        int[] array = {1, 2, 3, 4, 5};
+        int[] array = { 1, 2, 3, 4, 5 };
         int[] invertedArray = Application.invertArray(array);
-        int[] expectedResult = {5, 4, 3, 2, 1};
+        int[] expectedResult = { 5, 4, 3, 2, 1 };
 
         assertArrayEquals(expectedResult, invertedArray);
     }
+
+    // TODO ajouter test unitaire pour tester fizzbuzz
+    // indice : pour comparer des tableau, possibilité d'utiliser assertArrayEquals
 }
