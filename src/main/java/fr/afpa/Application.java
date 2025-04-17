@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-
-
+        guessNumberGame();
     }
 
     public static void checkAge() {
@@ -360,6 +359,12 @@ public class Application {
         return averageOfValues;
     }
 
+    /**
+     * Inverts the order of elements in the given integer array.
+     *
+     * @param array the original array to invert
+     * @return a new array containing the elements of the original array in reverse order
+     */
     public static int[] invertArray(int[] array) {
         int[] invertedArray = new int[array.length];
         int invertedIndex = array.length - 1;
@@ -370,5 +375,106 @@ public class Application {
         }
 
         return invertedArray;
+    }
+
+    /**
+     * Sums all elements of an int matrix.
+     * @param matrix 
+     * @return sum of all elements.
+     */
+    public static int sum2DArrayValues(int[][] matrix) {
+        int sum = 0;
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                sum += matrix[i][j];
+            }
+        }
+
+        return sum;
+    }
+
+    /**
+     * Enter a square matrix and get the sum of all values in its diagonals.
+     * 
+     * @param matrix square matrix
+     * @param diagonalType Can be 1 or 2. 1 starts on top left corner and 2 starts on top right.
+     * @return Sum of values in given diagonal.
+     */
+    public static int sumMatrixDiagonal(int[][] matrix, int diagonalType) {
+        int sum = 0;
+        int diagonalStart = 0;
+        // Will be added to diagonalStart to increase or decrease the value of the index.
+        int diagonalVector = 1;
+
+        // if type 1, keep start at 0 and vector at 1.
+        if (diagonalType == 2) {
+            diagonalStart = matrix[0].length - 1;
+            diagonalVector = -1;
+        }
+        
+        for (int i = 0; i < matrix.length; i++) {
+            sum += matrix[i][diagonalStart];
+            diagonalStart += diagonalVector;
+        }
+
+        return sum;
+    }
+
+    public static void printPyramid(int chosenNumber) {
+        boolean keepLooping = true;
+        int numberOfStars = 0;
+        String pyramidLine = "";
+        char star = '*';
+        boolean pyramidTopIsReached = false;
+
+        while (keepLooping) {
+            if (!pyramidTopIsReached) {
+                if (numberOfStars < chosenNumber) {
+                    pyramidLine = pyramidLine + star;
+                    numberOfStars++;
+                    System.out.println(pyramidLine);
+                } else {
+                    pyramidTopIsReached = true;
+                }
+            } else if (numberOfStars > 0) {
+                pyramidLine = pyramidLine.substring(0, pyramidLine.length() - 1);
+                numberOfStars--;
+                System.out.println(pyramidLine);
+            } else {
+                keepLooping = false;
+            }
+        }
+    }
+
+    public static void guessNumberGame() {
+        Scanner scanner = new Scanner(System.in);
+        boolean keepPlaying = true;
+        int guessesLeft = 10;
+        int numberToGuess = (int)(Math.random() * (100 - 1 + 1)) + 1;
+        int currentGuess = 0;
+        String prompt = "Try and find the secret number (1-100): ";
+
+        while (keepPlaying) {
+            System.out.print(prompt);
+            currentGuess = scanner.nextInt();
+            
+            if (currentGuess != numberToGuess) {
+                guessesLeft--;
+                if (guessesLeft == 0) {
+                    System.out.println("No guesses left, secret number was " + numberToGuess);
+                    keepPlaying = false;
+                } else if (currentGuess > numberToGuess) {
+                    prompt = "Secret number is smaller, try again: ";
+                } else {
+                    prompt = "Secret number is bigger, try again: ";
+                }
+            } else {
+                System.out.println("Well done! The secret number was indeed " + numberToGuess);
+                keepPlaying = false;
+            }
+        }
+
+        scanner.close();
     }
 }

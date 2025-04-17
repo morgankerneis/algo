@@ -109,4 +109,30 @@ class ApplicationTest {
 
         assertArrayEquals(expectedResult, invertedArray);
     }
+
+    @Test
+    void testSum2DArrayValues() {
+        int[][] matrix = {
+            { 1, 2, 3 },
+            { 4, 5, 6 },
+            { 7, 8, 9 }
+        };
+        int result = Application.sum2DArrayValues(matrix);
+        int expectedResult = 45;
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    void testSumMatrixDiagonal() {
+        int[][] matrix = {
+            { 2, 2, 3 },
+            { 4, 5, 6 },
+            { 7, 8, 9 }
+        };
+        int result = Application.sumMatrixDiagonal(matrix, 1);
+        int expectedResult = 16;
+
+        assertEquals(expectedResult, result);
+    }
 }
