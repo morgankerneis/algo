@@ -8,6 +8,7 @@ public class Application {
         guessNumberGame();
     }
 
+    // TODO ajouter javadoc
     public static void checkAge() {
 
         // initializing a new Scanner object for it to scan the system for inputs.
@@ -32,6 +33,8 @@ public class Application {
 
     }
 
+    // TODO okay pour la logique, serait-il possible de faire une fonction qui prend
+    // 3 paramètres (var1,var2, vaer3) de façon à ne pas avoir les valeurs en dur
     public static void findMinAndMax() {
         int var1 = 20;
         int var2 = 10;
@@ -58,6 +61,8 @@ public class Application {
         System.out.println(max);
     }
 
+    // TODO ajouter javadoc
+    // ✅ logique
     public static void sortCharacter() {
         Scanner scanner = new Scanner(System.in);
 
@@ -81,6 +86,8 @@ public class Application {
         scanner.close();
     }
 
+    // TODO ajouter javadoc
+    // ✅ logique
     public static void checkAccountBalance() {
         Scanner scanner = new Scanner(System.in);
 
@@ -99,11 +106,16 @@ public class Application {
         scanner.close();
     }
 
+    // TODO javadoc
     public static void calculateRefundRate() {
         Scanner scanner = new Scanner(System.in);
+        // nice variable name
+        // Do not forget : There are only two hard things in Computer Science: cache
+        // invalidation and naming things. - Martin Fowler
         Boolean loopOver = true;
         int maxHelpRate = 50;
 
+        // TODO micro-optimisation, ne pas faire la comparaison et mettre le booléen directement
         while (loopOver == true) {
 
             System.out.print("Relationship status (S for single, O for other): ");
@@ -112,6 +124,8 @@ public class Application {
             int numberOfChildren = scanner.nextInt();
             System.out.print("Monthly income: ");
             int monthlyIncome = scanner.nextInt();
+            // TODO serait-il possible de s'affranchir d'une des 2 branches du switch en
+            // modifiant l'intialiasation de helpRate ?
             int helpRate = 0;
 
             switch (relationshipStatus) {
@@ -143,6 +157,8 @@ public class Application {
             char userAnswer = scanner.next().charAt(0);
 
             if (userAnswer == 'n') {
+                // classy stuff, casser une boucle while avec un booléen bien nommé est toujours
+                // très élégant
                 loopOver = false;
             }
 
@@ -151,6 +167,8 @@ public class Application {
         scanner.close();
     }
 
+    // TODO javadoc
+    // ✅ logique
     public static void subCountFor() {
         int subCount = 2500;
         double monthlySubGain = 1.05; // +5%
@@ -162,6 +180,8 @@ public class Application {
         System.out.println("Sub count = " + subCount);
     }
 
+    // TODO javadoc
+    // ✅logique
     public static void subCountWhile() {
         int subCount = 2500;
         double monthlySubGain = 1.05;
@@ -178,6 +198,7 @@ public class Application {
 
     /**
      * Fonction permettant d'additionner les entier de 0 à numberMax
+     * ✅okay
      * 
      * @param numberMax Le nombre max à considérer
      * @return La somme calculée
@@ -194,6 +215,8 @@ public class Application {
 
     /**
      * Tu connais le Fizzbuzz frr sinon t'es pas embauché t'façon
+     * ✅okay
+     * 
      * @param chosenNumber
      * @return Fizzbuzz is love, fizzbuzz is life.
      */
@@ -219,6 +242,7 @@ public class Application {
         return mixedArray;
     }
 
+    // ✅okay
     public static int factorial(int n) {
         int result = 1;
 
@@ -230,6 +254,7 @@ public class Application {
         return result;
     }
 
+    // ✅okay
     public static <T> void printArrayContent(T[] array) {
         for (Object item : array) {
             System.out.println(item);
@@ -238,12 +263,14 @@ public class Application {
 
     /**
      * Uses a for loop to search through an array for a given value.
+     * ✅okay
+     * 
      * @param array
      * @param arrayLength
      * @param searchedElement
      * @return
-     * Returns index of searched element.
-     * Returns -1 if not found.
+     *         Returns index of searched element.
+     *         Returns -1 if not found.
      */
     public static int findArrayIndexFor(int[] array, int arrayLength, int searchedElement) {        
         for (int i = 0; i < arrayLength; i++) {
@@ -255,6 +282,7 @@ public class Application {
         return -1;
     }
 
+    // ✅okay
     public static int findArrayIndexWhile(int[] array, int searchedElement) {
         int arrayLength = array.length;
         int loopCount = 0;
@@ -274,6 +302,7 @@ public class Application {
         return result;
     }
 
+    // ✅okay
     public static int findArrayIndexDoWhile(int[] array, int searchedElement) {
         int arrayLength = array.length;
         int loopCount = 0;
@@ -292,6 +321,7 @@ public class Application {
         return result;
     }
 
+    // ✅okay
     public static int findSumBetweenIndex(int[] array, int indexA, int indexB) {
         int sum = 0;
 
@@ -302,6 +332,7 @@ public class Application {
         return sum;
     }
 
+    // TODO ajouter Javadoc
     public static int[] arrayMinMaxValues(int[] array) {
         int arrayLength = array.length;
         int min = array[0];
@@ -309,6 +340,7 @@ public class Application {
         int indexMin = 0;
         int indexMax = 0;
 
+        // TODO si min et max sont initialisées avec array[0], pouvons nous gagner une itération de boucle avec une autre intiialisation de i ?
         for (int i = 0; i < arrayLength; i++) {
             if (min > array[i]) {
                 min = array[i];
@@ -320,7 +352,7 @@ public class Application {
             }
         }
 
-        int[] minMax = {indexMin, indexMax};
+        int[] minMax = { indexMin, indexMax };
         return minMax;
     }
 
@@ -345,6 +377,7 @@ public class Application {
         }
     }
 
+    // TODO javadoc
     public static int calcAverageInArray(int[] array) {
         int sumOfValues = 0;
         int numberOfValues = 0;
@@ -358,6 +391,15 @@ public class Application {
 
         return averageOfValues;
     }
+
+    /**
+     * Inverts the order of elements in the given integer array.
+     *
+     * @param array the original array to invert
+     * @return a new array containing the elements of the original array in reverse order
+     */
+
+    // TODO javado -> bien indiquer que la fonction va créer un nouveau tableau et de pas toucher au tableau passé en paramètre
 
     /**
      * Inverts the order of elements in the given integer array.
