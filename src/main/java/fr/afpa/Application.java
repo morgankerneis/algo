@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-        guessNumberGame();
+        
     }
 
     // TODO ajouter javadoc
@@ -518,5 +518,60 @@ public class Application {
         }
 
         scanner.close();
+    }
+
+    /**
+     * Iterates through given string and returns the amount of vowels in it.
+     * @param string case doesn't matter
+     * @return vowel count / -1 if error
+     */
+    public static int countVowelsInString(String string) {
+        if (string == "") {
+            return -1;
+        }
+        
+        int vowelCount = 0;
+        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y'};
+        // lowering case of characters in string to match with vowel array
+        String loweredString = string.toLowerCase();
+
+        for (int i = 0; i < string.length(); i++) {
+            char character = loweredString.charAt(i);
+            for (char vowel : vowels) {
+                if (character == vowel) {
+                    vowelCount++;
+                    break;
+                }
+            }
+        }
+
+        return vowelCount;
+    }
+
+    /**
+     * Counts amount of upper cased characters in a given string.
+     * @param string
+     * @return -1 if error
+     */
+    public static int countUpperCasedChars(String string) {
+        int upperCaseCount = 0;
+
+        for (char character : string.toCharArray()) {
+            if (Character.isUpperCase(character)) {
+                upperCaseCount++;
+            }
+        }
+
+        return upperCaseCount;
+    }
+
+    public static String strToUpper(String string) {
+        String upperCasedChain = "";
+
+        for (char character : string.toCharArray()) {
+            upperCasedChain += Character.toUpperCase(character);
+        }
+
+        return upperCasedChain;
     }
 }

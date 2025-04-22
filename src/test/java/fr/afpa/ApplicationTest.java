@@ -137,4 +137,31 @@ class ApplicationTest {
 
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    void TestCountVowelsInString() {
+        String string = "";
+        int testResult = Application.countVowelsInString(string);
+        int expectedResult = -1;
+
+        assertEquals(expectedResult, testResult);
+    }
+
+    @Test
+    void testcountUpperCasedChars() {
+        String string = "Why Are You Gae?";
+        int testResult = Application.countUpperCasedChars(string);
+        int expectedResult = 4;
+
+        assertEquals(expectedResult, testResult);
+    }
+
+    @Test
+    void testStrToUpper() {
+        String string = "Are you winning son?";
+        String testResult = Application.strToUpper(string);
+        String expectedResult = "ARE YOU WINNING SON?";
+        
+        assertEquals(expectedResult, testResult);
+    }
 }
