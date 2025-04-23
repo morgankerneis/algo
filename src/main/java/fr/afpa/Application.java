@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-        
+        String outerString = "I like trained trains.";
+        String innerSrString = "trains";
+
+        findStrInStr(outerString, innerSrString);
     }
 
     // TODO ajouter javadoc
@@ -573,5 +576,78 @@ public class Application {
         }
 
         return upperCasedChain;
+    }
+
+    public static String reverseString(String string) {
+        String reverseString = "";
+
+        for (int i = string.length(); i > 0; i--) {
+            reverseString += string.charAt(i - 1);
+        }
+
+        return reverseString;
+    }
+
+    /**
+     * Formats a given string to camelCase removing all special characters.
+     * @param string
+     * @return the given string formated in this fashion: "You dare fight a dunmer?" --> "youDareFightADunmer".
+     */
+    public static String strToCamelCase(String string) {
+        String[] splitString = string.split("[\\s,.!?:]+");
+        String camelString = "";
+        boolean isTheFirstWord = true;
+
+        for (String word : splitString) {
+            if (!isTheFirstWord) {
+                // Selecting the first letter and setting it to upper case. Then concatenating the rest of the word to it.
+                word = Character.toUpperCase(word.charAt(0)) + word.substring(1);
+            } else {
+                isTheFirstWord = false;
+                // Same but setting the first letter to lower case.
+                word = Character.toLowerCase(word.charAt(0)) + word.substring(1);
+            }
+
+            camelString += word;
+        }
+
+        return camelString;
+    }
+
+    public static int[] findStrInStr(String outerString, String innerString) {
+        // buckle up cuz we gonna be loopin'
+        int innerStringCharacterIndex = 0;
+        String commonWord = "";
+        int firstCommonWordLetterIndex = -1;
+        int lastCommonWordLetterIndex = -1;
+
+        for (int i = 0; i < outerString.length(); i++) {
+            if (outerString.charAt(i) == innerString.charAt(0)) {
+                boolean similarity = true;
+                firstCommonWordLetterIndex = i;
+
+                while (similarity) {
+                    if (outerString.charAt(i) == innerString.charAt(innerStringCharacterIndex)) {
+                        commonWord += outerString.charAt(i);
+                        lastCommonWordLetterIndex = i;
+                        i++;
+                        innerStringCharacterIndex++;
+                        if (commonWord.equals(innerString)) {
+                            int[] results = {firstCommonWordLetterIndex, lastCommonWordLetterIndex};
+                            return results;
+                        }
+                    } else {
+                        similarity = false;
+                        innerStringCharacterIndex = 0;
+                        firstCommonWordLetterIndex = -1;
+                        lastCommonWordLetterIndex = -1;
+                        commonWord = "";
+                    }
+                }
+            }
+        }
+
+        int[] results = {firstCommonWordLetterIndex, lastCommonWordLetterIndex};
+        return results;
     }
 }

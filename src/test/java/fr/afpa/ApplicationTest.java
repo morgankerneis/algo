@@ -164,4 +164,23 @@ class ApplicationTest {
         
         assertEquals(expectedResult, testResult);
     }
+
+    @Test
+    void testStrToCamelCase() {
+        String string = "You dare fight a dunmer?";
+        String testResult = Application.strToCamelCase(string);
+        String expectedResult = "youDareFightADunmer";
+
+        assertEquals(expectedResult, testResult);
+    }
+
+    @Test
+    void testFindStrInStr() {
+        String outerString = "I like trained trains.";
+        String innerSrString = "trins";
+        int[] testResult = Application.findStrInStr(outerString, innerSrString);
+        int[] expectedResult = {-1, -1};
+
+        assertArrayEquals(expectedResult, testResult);
+    }
 }
