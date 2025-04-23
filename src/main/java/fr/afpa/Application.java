@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-        
     }
 
     // TODO ajouter javadoc
@@ -115,7 +114,8 @@ public class Application {
         Boolean loopOver = true;
         int maxHelpRate = 50;
 
-        // TODO micro-optimisation, ne pas faire la comparaison et mettre le booléen directement
+        // TODO micro-optimisation, ne pas faire la comparaison et mettre le booléen
+        // directement
         while (loopOver == true) {
 
             System.out.print("Relationship status (S for single, O for other): ");
@@ -229,7 +229,7 @@ public class Application {
             int arrayIndex = i - 1;
 
             if (moduloThree == 0 && moduloFive == 0) {
-                mixedArray[arrayIndex] = "Fizzbuzz"; 
+                mixedArray[arrayIndex] = "Fizzbuzz";
             } else if (moduloThree == 0) {
                 mixedArray[arrayIndex] = "Fizz";
             } else if (moduloFive == 0) {
@@ -272,7 +272,7 @@ public class Application {
      *         Returns index of searched element.
      *         Returns -1 if not found.
      */
-    public static int findArrayIndexFor(int[] array, int arrayLength, int searchedElement) {        
+    public static int findArrayIndexFor(int[] array, int arrayLength, int searchedElement) {
         for (int i = 0; i < arrayLength; i++) {
             if (array[i] == searchedElement) {
                 return i;
@@ -289,7 +289,7 @@ public class Application {
         int result = -1;
 
         while (loopCount < arrayLength) {
-             
+
             if (array[loopCount] == searchedElement) {
                 result = loopCount;
                 // early loop stoppage
@@ -340,7 +340,8 @@ public class Application {
         int indexMin = 0;
         int indexMax = 0;
 
-        // TODO si min et max sont initialisées avec array[0], pouvons nous gagner une itération de boucle avec une autre intiialisation de i ?
+        // TODO si min et max sont initialisées avec array[0], pouvons nous gagner une
+        // itération de boucle avec une autre intiialisation de i ?
         for (int i = 0; i < arrayLength; i++) {
             if (min > array[i]) {
                 min = array[i];
@@ -396,16 +397,19 @@ public class Application {
      * Inverts the order of elements in the given integer array.
      *
      * @param array the original array to invert
-     * @return a new array containing the elements of the original array in reverse order
+     * @return a new array containing the elements of the original array in reverse
+     *         order
      */
 
-    // TODO javado -> bien indiquer que la fonction va créer un nouveau tableau et de pas toucher au tableau passé en paramètre
+    // TODO javado -> bien indiquer que la fonction va créer un nouveau tableau et
+    // de pas toucher au tableau passé en paramètre
 
     /**
      * Inverts the order of elements in the given integer array.
      *
      * @param array the original array to invert
-     * @return a new array containing the elements of the original array in reverse order
+     * @return a new array containing the elements of the original array in reverse
+     *         order
      */
     public static int[] invertArray(int[] array) {
         int[] invertedArray = new int[array.length];
@@ -419,9 +423,11 @@ public class Application {
         return invertedArray;
     }
 
+    // ✅ Bonne logique
     /**
      * Sums all elements of an int matrix.
-     * @param matrix 
+     * 
+     * @param matrix
      * @return sum of all elements.
      */
     public static int sum2DArrayValues(int[][] matrix) {
@@ -432,21 +438,26 @@ public class Application {
                 sum += matrix[i][j];
             }
         }
-
         return sum;
     }
 
+    // TO DO
+    // Le if / else serait adapté ici pour diagonalStart et diagonalVector au lieu
+    // d'initialiser pour
+    // diagonalType = 1 et écraser ensuite si diagonalType = 2
     /**
      * Enter a square matrix and get the sum of all values in its diagonals.
      * 
-     * @param matrix square matrix
-     * @param diagonalType Can be 1 or 2. 1 starts on top left corner and 2 starts on top right.
+     * @param matrix       square matrix
+     * @param diagonalType Can be 1 or 2. 1 starts on top left corner and 2 starts
+     *                     on top right.
      * @return Sum of values in given diagonal.
      */
     public static int sumMatrixDiagonal(int[][] matrix, int diagonalType) {
         int sum = 0;
         int diagonalStart = 0;
-        // Will be added to diagonalStart to increase or decrease the value of the index.
+        // Will be added to diagonalStart to increase or decrease the value of the
+        // index.
         int diagonalVector = 1;
 
         // if type 1, keep start at 0 and vector at 1.
@@ -454,7 +465,7 @@ public class Application {
             diagonalStart = matrix[0].length - 1;
             diagonalVector = -1;
         }
-        
+
         for (int i = 0; i < matrix.length; i++) {
             sum += matrix[i][diagonalStart];
             diagonalStart += diagonalVector;
@@ -463,6 +474,8 @@ public class Application {
         return sum;
     }
 
+    // ✅ Okay
+    // TODO javadoc
     public static void printPyramid(int chosenNumber) {
         boolean keepLooping = true;
         int numberOfStars = 0;
@@ -489,18 +502,21 @@ public class Application {
         }
     }
 
+    // TODO javadoc
+    // Math.random() * (100 - 1 + 1) ??
+    // ✅ Okay
     public static void guessNumberGame() {
         Scanner scanner = new Scanner(System.in);
         boolean keepPlaying = true;
         int guessesLeft = 10;
-        int numberToGuess = (int)(Math.random() * (100 - 1 + 1)) + 1;
+        int numberToGuess = (int) (Math.random() * (100 - 1 + 1)) + 1;
         int currentGuess = 0;
         String prompt = "Try and find the secret number (1-100): ";
 
         while (keepPlaying) {
             System.out.print(prompt);
             currentGuess = scanner.nextInt();
-            
+
             if (currentGuess != numberToGuess) {
                 guessesLeft--;
                 if (guessesLeft == 0) {
@@ -520,8 +536,11 @@ public class Application {
         scanner.close();
     }
 
+    // Préferer un do while au lieu d'un for quand on doit sortir avant la fin et
+    // éviter les break qui sont difficilement maintenanble
     /**
      * Iterates through given string and returns the amount of vowels in it.
+     * 
      * @param string case doesn't matter
      * @return vowel count / -1 if error
      */
@@ -529,9 +548,9 @@ public class Application {
         if (string == "") {
             return -1;
         }
-        
+
         int vowelCount = 0;
-        char[] vowels = {'a', 'e', 'i', 'o', 'u', 'y'};
+        char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
         // lowering case of characters in string to match with vowel array
         String loweredString = string.toLowerCase();
 
@@ -548,8 +567,10 @@ public class Application {
         return vowelCount;
     }
 
+    // ✅ Bonne logique
     /**
      * Counts amount of upper cased characters in a given string.
+     * 
      * @param string
      * @return -1 if error
      */
