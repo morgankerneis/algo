@@ -5,14 +5,12 @@ import java.util.Scanner;
 public class Application {
 
     public static void main(String[] args) {
-
-        String outerString = "I like trained trains.";
-        String innerSrString = "trains";
-
-        findStrInStr(outerString, innerSrString);
+        binaryToBaseTen("111");
     }
 
-    // TODO ajouter javadoc
+    /**
+     * Prompts the user for its age and returns if they are an adult or a minor.
+     */
     public static void checkAge() {
 
         // initializing a new Scanner object for it to scan the system for inputs.
@@ -37,12 +35,7 @@ public class Application {
 
     }
 
-    // TODO okay pour la logique, serait-il possible de faire une fonction qui prend
-    // 3 paramètres (var1,var2, vaer3) de façon à ne pas avoir les valeurs en dur
-    public static void findMinAndMax() {
-        int var1 = 20;
-        int var2 = 10;
-        int var3 = 30;
+    public static void findMinAndMax(int var1, int var2, int var3) {
 
         int min = var1;
         int max = var1;
@@ -65,7 +58,9 @@ public class Application {
         System.out.println(max);
     }
 
-    // TODO ajouter javadoc
+    /**
+     * Determines if the given character is a vowel or not.
+     */
     // ✅ logique
     public static void sortCharacter() {
         Scanner scanner = new Scanner(System.in);
@@ -90,7 +85,10 @@ public class Application {
         scanner.close();
     }
 
-    // TODO ajouter javadoc
+    /**
+     * Asks user for account balance and article. Returns if article can be bought
+     * or not.
+     */
     // ✅ logique
     public static void checkAccountBalance() {
         Scanner scanner = new Scanner(System.in);
@@ -110,7 +108,6 @@ public class Application {
         scanner.close();
     }
 
-    // TODO javadoc
     public static void calculateRefundRate() {
         Scanner scanner = new Scanner(System.in);
         // nice variable name
@@ -119,9 +116,7 @@ public class Application {
         Boolean loopOver = true;
         int maxHelpRate = 50;
 
-        // TODO micro-optimisation, ne pas faire la comparaison et mettre le booléen
-        // directement
-        while (loopOver == true) {
+        while (loopOver) {
 
             System.out.print("Relationship status (S for single, O for other): ");
             char relationshipStatus = scanner.next().charAt(0);
@@ -129,18 +124,11 @@ public class Application {
             int numberOfChildren = scanner.nextInt();
             System.out.print("Monthly income: ");
             int monthlyIncome = scanner.nextInt();
-            // TODO serait-il possible de s'affranchir d'une des 2 branches du switch en
-            // modifiant l'intialiasation de helpRate ?
-            int helpRate = 0;
 
-            switch (relationshipStatus) {
-                case 's':
-                    helpRate += 20;
-                    break;
+            int helpRate = 20;
 
-                case 'o':
-                    helpRate += 25;
-                    break;
+            if (relationshipStatus == 'o') {
+                helpRate += 5;
             }
 
             if (numberOfChildren > 0) {
@@ -172,7 +160,6 @@ public class Application {
         scanner.close();
     }
 
-    // TODO javadoc
     // ✅ logique
     public static void subCountFor() {
         int subCount = 2500;
@@ -185,7 +172,6 @@ public class Application {
         System.out.println("Sub count = " + subCount);
     }
 
-    // TODO javadoc
     // ✅logique
     public static void subCountWhile() {
         int subCount = 2500;
@@ -337,7 +323,12 @@ public class Application {
         return sum;
     }
 
-    // TODO ajouter Javadoc
+    /**
+     * Finds the maximum and minimum values of a given array.
+     * 
+     * @param array
+     * @return
+     */
     public static int[] arrayMinMaxValues(int[] array) {
         int arrayLength = array.length;
         int min = array[0];
@@ -383,7 +374,12 @@ public class Application {
         }
     }
 
-    // TODO javadoc
+    /**
+     * Calculates the average of all values in a given array.
+     * 
+     * @param array
+     * @return average as an int value
+     */
     public static int calcAverageInArray(int[] array) {
         int sumOfValues = 0;
         int numberOfValues = 0;
@@ -397,14 +393,6 @@ public class Application {
 
         return averageOfValues;
     }
-
-    /**
-     * Inverts the order of elements in the given integer array.
-     *
-     * @param array the original array to invert
-     * @return a new array containing the elements of the original array in reverse
-     *         order
-     */
 
     // TODO javado -> bien indiquer que la fonction va créer un nouveau tableau et
     // de pas toucher au tableau passé en paramètre
@@ -432,7 +420,7 @@ public class Application {
     /**
      * Sums all elements of an int matrix.
      * 
-     * @param matrix 
+     * @param matrix
      * @return sum of all elements.
      */
     public static int sum2DArrayValues(int[][] matrix) {
@@ -553,7 +541,7 @@ public class Application {
         if (string == "") {
             return -1;
         }
-        
+
         int vowelCount = 0;
         char[] vowels = { 'a', 'e', 'i', 'o', 'u', 'y' };
         // lowering case of characters in string to match with vowel array
@@ -613,8 +601,10 @@ public class Application {
 
     /**
      * Formats a given string to camelCase removing all special characters.
+     * 
      * @param string
-     * @return the given string formated in this fashion: "You dare fight a dunmer?" --> "youDareFightADunmer".
+     * @return the given string formated in this fashion: "You dare fight a dunmer?"
+     *         --> "youDareFightADunmer".
      */
     public static String strToCamelCase(String string) {
         String[] splitString = string.split("[\\s,.!?:]+");
@@ -623,7 +613,8 @@ public class Application {
 
         for (String word : splitString) {
             if (!isTheFirstWord) {
-                // Selecting the first letter and setting it to upper case. Then concatenating the rest of the word to it.
+                // Selecting the first letter and setting it to upper case. Then concatenating
+                // the rest of the word to it.
                 word = Character.toUpperCase(word.charAt(0)) + word.substring(1);
             } else {
                 isTheFirstWord = false;
@@ -656,7 +647,7 @@ public class Application {
                         i++;
                         innerStringCharacterIndex++;
                         if (commonWord.equals(innerString)) {
-                            int[] results = {firstCommonWordLetterIndex, lastCommonWordLetterIndex};
+                            int[] results = { firstCommonWordLetterIndex, lastCommonWordLetterIndex };
                             return results;
                         }
                     } else {
@@ -670,9 +661,83 @@ public class Application {
             }
         }
 
-        int[] results = {firstCommonWordLetterIndex, lastCommonWordLetterIndex};
+        int[] results = { firstCommonWordLetterIndex, lastCommonWordLetterIndex };
         return results;
     }
 
-    
+    /**
+     * Converts binary values into decimal.
+     * 
+     * @param binaryCode
+     * @return a base 10 Integer
+     */
+    public static int binaryToBaseTen(String binaryCode) {
+        int baseTenResult = 0;
+        int exponent = binaryCode.length() - 1;
+
+        for (int i = 0; i < binaryCode.length(); i++) {
+            int digit = Character.getNumericValue(binaryCode.charAt(i));
+            baseTenResult += digit * Math.pow(2, exponent);
+            exponent--;
+        }
+
+        return baseTenResult;
+    }
+
+    /**
+     * Converts a decimal value into binary.
+     * 
+     * @param baseTenNumber
+     * @return a base 2 result in a string
+     */
+    public static String baseTenToBinary(int baseTenNumber) {
+        // would return an empty string otherwise
+        if (baseTenNumber == 0)
+            return "0";
+
+        StringBuilder binaryResult = new StringBuilder();
+
+        while (baseTenNumber != 0) {
+
+            int remainder = baseTenNumber % 2;
+            baseTenNumber = baseTenNumber / 2;
+            // will be reversed at the end
+            binaryResult.append(remainder);
+
+        }
+
+        return binaryResult.reverse().toString();
+    }
+
+    public static int[] fuseSortedArrays(int[] array1, int[] array2) {
+
+        int[] newSortedArray = new int[array1.length + array2.length];
+        // i == newSortedArray index
+        int i = 0;
+        int index1 = 0;
+        int index2 = 0;
+
+        while (index1 < array1.length && index2 < array2.length) {
+            if (array1[index1] <= array2[index2]) {
+                newSortedArray[i] = array1[index1];
+                i++;
+                index1++;
+            } else {
+                newSortedArray[i] = array2[index2];
+                i++;
+                index2++;
+            }
+        }
+
+        for (int j = index2; j < array2.length; j++) {
+            newSortedArray[i] = array2[j];
+            i++;
+        }
+        for (int j = index1; j < array1.length; j++) {
+            newSortedArray[i] = array1[j];
+            i++;
+        }
+
+        return newSortedArray;
+    }
 }

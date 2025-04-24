@@ -21,11 +21,6 @@ class ApplicationTest {
     }
 
     @Test
-    void testFindMinMax() {
-        Application.findMinAndMax();
-    }
-
-    @Test
     void testSortCharacter() {
         Application.sortCharacter();
     }
@@ -115,9 +110,9 @@ class ApplicationTest {
     @Test
     void testSum2DArrayValues() {
         int[][] matrix = {
-            { 1, 2, 3 },
-            { 4, 5, 6 },
-            { 7, 8, 9 }
+                { 1, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
         };
         int result = Application.sum2DArrayValues(matrix);
         int expectedResult = 45;
@@ -128,9 +123,9 @@ class ApplicationTest {
     @Test
     void testSumMatrixDiagonal() {
         int[][] matrix = {
-            { 2, 2, 3 },
-            { 4, 5, 6 },
-            { 7, 8, 9 }
+                { 2, 2, 3 },
+                { 4, 5, 6 },
+                { 7, 8, 9 }
         };
         int result = Application.sumMatrixDiagonal(matrix, 1);
         int expectedResult = 16;
@@ -161,7 +156,7 @@ class ApplicationTest {
         String string = "Are you winning son?";
         String testResult = Application.strToUpper(string);
         String expectedResult = "ARE YOU WINNING SON?";
-        
+
         assertEquals(expectedResult, testResult);
     }
 
@@ -179,8 +174,38 @@ class ApplicationTest {
         String outerString = "I like trained trains.";
         String innerSrString = "trins";
         int[] testResult = Application.findStrInStr(outerString, innerSrString);
-        int[] expectedResult = {-1, -1};
+        int[] expectedResult = { -1, -1 };
 
         assertArrayEquals(expectedResult, testResult);
+    }
+
+    @Test
+    void testBinaryToBaseTen() {
+        String binary = "111";
+        int testResult = Application.binaryToBaseTen(binary);
+        int expectedResult = 7;
+
+        assertEquals(expectedResult, testResult);
+
+    }
+
+    @Test
+    void testBaseTenToBinary() {
+        int baseTenNumber = 7;
+        String testResult = Application.baseTenToBinary(baseTenNumber);
+        String expectedResult = "111";
+
+        assertEquals(expectedResult, testResult);
+    }
+
+    @Test
+    void testFuseSortedArrays() {
+        int[] array1 = { 1, 3, 4, 5, 7, 9 };
+        int[] array2 = { 2, 4, 6, 8 };
+
+        int[] testArray = Application.fuseSortedArrays(array1, array2);
+        int[] expectedArray = { 1, 2, 3, 4, 4, 5, 6, 7, 8, 9 };
+
+        assertArrayEquals(expectedArray, testArray);
     }
 }
